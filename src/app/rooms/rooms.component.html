@@ -1,0 +1,128 @@
+<div class="row header">
+  <h1 class="animated fadeInDown">
+    <span>C</span>ommunity
+    <span>IO</span>
+  </h1>
+</div>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="search-room">
+        <div class="form-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"></div>
+              </div>
+          <input type="text" class="form-control" (keyup)="buscar()" name="txtSearchRoom" id="txtSearchRoom" aria-describedby="helpId" placeholder="Buscar Sala" [(ngModel)]="_txtSearchRoom">
+        </div>
+      </div>
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
+
+<div id="container-rooms">
+  <div class="row prueba">
+    <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto fix2 aniview" data-av-animation="fadeInUp" *ngFor="let room of rooms | roomFilter: _txtSearchRoom">
+      <div class="room" [ngStyle]="{
+        'background':room.background
+      }" (click)="openRoom(room)">
+        <div class="room-header">
+          <h3>{{room.title}}</h3>
+        </div>
+        <div class="room-body">
+          <div class="room-image-container">
+            <img class="room-image clip-circle" src="../../assets/img/{{room.image}}" />
+          </div>
+        </div>
+        <div class="room-footer">
+          <div class="room-description">
+            <div class="room-description-header">
+              Información {{5}}
+            </div>
+            <div class="room-description-body">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dignissimos possimus adipisci sapiente quasi modi velit hic.
+              Error, et debitis, sapiente nulla fugiat dolor ipsum nesciunt, magni autem incidunt tempora.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto fix2">
+      <div class="room" style='background: linear-gradient(to bottom right, #c58c00,#f83611)'>
+        <div class="room-header">
+          <h3>room.title</h3>
+        </div>
+        <div class="room-body">
+          <div class="room-image-container">
+            <img class="room-image clip-circle" src="../../assets/img/img2.jpg" />
+          </div>
+        </div>
+        <div class="room-footer">
+          <div class="room-description">
+            <div class="room-description-header">
+              Información
+            </div>
+            <div class="room-description-body">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim dignissimos possimus adipisci sapiente quasi modi velit hic.
+              Error, et debitis, sapiente nulla fugiat dolor ipsum nesciunt, magni autem incidunt tempora.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal animated fadeInUp" id="loginRoom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered " role="document" *ngIf = "roomModal != null">
+      <div class="modal-content" >
+        <div class="modal-header aniview" data-av-animation="fadeInUp">
+          <h5 class="modal-title" id="exampleModalLabel">{{roomModal.title}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body aniview">
+            <div class="image-container">
+              <div class="back-image" [ngStyle]="{'background':roomModal.background}"></div>
+              <img src="../../assets/img/{{roomModal.image}}" style="height: 200px;width:200px" class="rounded-circle img-fluid login-image" alt="...">
+            </div>
+          <h1 [ngStyle]="{'color':'#a4a4a4'}">Usuarios</h1>
+          <div class="row users-room-container">
+            <!-- <li *ngFor = "let user of roomModal.users"class="col-sm-4 col-xs-2" [ngStyle]="{'background':user.background,'padding':'10px 5px','color':'white','list-style-type':'none'}">{{user.userName}}</li> -->
+            <div class="user-tag" *ngFor="let user of roomModal.users" [ngStyle]="{'background':user.background}">
+              <div class="user-letter" [ngStyle]="{'color':user.background}">{{user.userName | firstLetter}}</div>
+              <div class="user-name">{{user.userName}}</div>
+            </div>
+          </div>
+          <p class="d-flex justify-content-center">
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Unirme
+            </button>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Nombre de Usuario</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usuario">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Contraseña</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputPassword1">Color de Usuario</label>
+                  <input type="color" name="" id="">
+                </div>
+          </div>
+        <div class="modal-footer aniview">
+          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-outline-primary">Ingresar</button>
+        </div>
+      </div>
+    </div>
+  </div>

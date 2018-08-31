@@ -1,0 +1,22 @@
+<p>
+  chat-room works!
+</p>
+
+<div class="container">
+  <div class="property-tag row">
+      <div class="property-name col-md-3">KEY</div>
+      <div class="property-value col-md-8">{{items.key}}</div>
+  </div>
+  <div class="property-tag row">
+      <div class="property-name col-md-3">VALUES</div>
+      <div class="property-value col-md-8">Agregar </div>
+  </div>
+
+  <!-- <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of items.values">
+      {{item}}
+      <button class="btn">Eliminar</button>
+    </li>
+  </ul> -->
+  <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
+</div>
